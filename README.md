@@ -1,34 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
+npx create-next-app husky-next
+touch tsconfig.json
+npm install --save-dev typescript @types/react @types/node
 npm run dev
-# or
-yarn dev
+npm install eslint --save-dev
+npx eslint --init
+
+✔ How would you like to use ESLint? · style (enforce)
+✔ What type of modules does your project use? · esm
+✔ Which framework does your project use? · react
+✔ Does your project use TypeScript? · No / Yes
+✔ Where does your code run? · browser
+✔ How would you like to define a style for your project? · guide
+✔ Which style guide do you want to follow? · google
+✔ What format do you want your config file to be in? · JavaScript
+Checking peerDependencies of eslint-config-google@latest
+✔ Would you like to install them now with npm? · Yes
+
+add settings lines to .eslintrc.js
+
+npm install --save-dev prettier  
+npm install --save-dev eslint-config-prettier
+
+add 'prettier' to 'extends' of .eslintrc.js
+
+install vscode extensions ES7 and Prettier
+in settings:
+
+- "editor.defaultFormatter": "esbenp.prettier-vscode",
+- "editor.formatOnPaste": true
+- "editor.formatOnSave": true,
+
+Errors in index.ts file after finishing with settings:
+
+- Missing JSDoc comment -> .eslint(require-jsdoc)
+- 'React' must be in scope when using JSX -> eslint(react/react-in-jsx-scope)
+  Fix: added
+
+```
+import React from "react";
+
+/**
+ * Home Page of the Application
+ * @return {JSX.Element}
+ */
+export default function Home(): JSX.Element {
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+prettier --write .
+zsh: command not found: prettier
+Fix: npm install -g prettier
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To execute eslint and prettier everytime you save:
+add .vscode folder in root
+add settings.json file in .vscode
+In this file, you can add settings specific to a particular project.  
+At the end of settings.josn, we say that eslint format first and then prettier format.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Install husky to set up a pre git commit hook that is going to do 4 things:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- no prettier warnings in the code
+- no eslint warnings in the code
+- no errors compiling typesript
+- that we can run a valid build using Next build
 
-## Learn More
+npx husky-init
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+In package.json, in scripts:
+"check-types": "tsc --pretty --noEmit", //check typescript with prettier  
+"check-format": "prettier --check .", //tells prettier to check all files, except the ones added to a .prettierignore file  
+"check-lint": "eslint . --ext ts ext tsx --ext js", //tells eslint to check all .ts, .tsx and .tsx files
+"format":.. //automatically rewrite all of our files with proper formatting
+"test-all":.. // runs some of the above scripts in sequence
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Note: add lint-staged to check staged files
