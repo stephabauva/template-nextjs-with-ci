@@ -71,6 +71,12 @@ In package.json, in scripts:
 "check-format": "prettier --check .", //tells prettier to check all files, except the ones added to a .prettierignore file  
 "check-lint": "eslint . --ext ts ext tsx --ext js", //tells eslint to check all .ts, .tsx and .tsx files
 "format":.. //automatically rewrite all of our files with proper formatting
-"test-all":.. // runs some of the above scripts in sequence
+"test-all":.. // runs some of the above commands in sequence
 
-Note: add lint-staged to check staged files
+add pre-commit file in .husky file that will run all scripts before it is commited and log warnings and errors
+
+Note:
+
+- add lint-staged to check staged files
+- added .eslintignore and .prettierignore with a few extentions to ignore
+- see video: https://www.youtube.com/watch?v=sH93pQb9bWM
