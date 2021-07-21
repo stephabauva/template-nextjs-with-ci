@@ -78,7 +78,18 @@ then do `npm run next-lint` in your terminal. You can also add it to the check s
 
 add pre-commit file in .husky file that will run all scripts before it is commited and log warnings and errors.
 
-Note:
+Notes:
+
+- I commented the npm run build part of pre-commit, uncomment if you want to add that stage.
+- added:
+
+```
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
+/* eslint-disable react/react-in-jsx-scope */
+```
+
+to \_app.js.
 
 - add lint-staged to check staged files
 - added .eslintignore and .prettierignore with a few extentions to ignore

@@ -11,11 +11,19 @@ npm run check-format ||
     false;
 )
 
-# Check ESLint Standards
-npm run check-lint ||
+# # Check ESLint Standards
+# npm run check-lint ||
+# (
+#         echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 
+#                 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+#         false; 
+# )
+
+# Check Next-Lint Standards
+npm run next-lint ||
 (
-        echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 
-                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        echo '🙀🏀👋😤 Get that weak shit out of here! 🙀🏀👋😤
+                Next-Lint Check Failed. Make the required changes listed above, add changes and try to commit again.'
         false; 
 )
 
