@@ -30,12 +30,6 @@ in settings:
 - "editor.formatOnPaste": true
 - "editor.formatOnSave": true,
 
-Errors in index.ts file after finishing with settings:
-
-- Missing JSDoc comment -> .eslint(require-jsdoc)
-- 'React' must be in scope when using JSX -> eslint(react/react-in-jsx-scope)
-  Fix: added
-
 ```
 import React from "react";
 
