@@ -1,96 +1,23 @@
-npx create-next-app husky-next
-touch tsconfig.json
-npm install --save-dev typescript @types/react @types/node
-npm run dev
-npm install eslint --save-dev
-npx eslint --init
+<p align="center">
+  <img height="300" src="https://github.com/stephanBV/template-react-typescript-autoLint-with-ESLint-Prettier/blob/master/template-react-typescript-autoLint-with-ESLint-Prettier/husky-ts-react-eslint-prettier.png"/>
+</p>
 
-✔ How would you like to use ESLint? · style (enforce)
-✔ What type of modules does your project use? · esm
-✔ Which framework does your project use? · react
-✔ Does your project use TypeScript? · No / Yes
-✔ Where does your code run? · browser
-✔ How would you like to define a style for your project? · guide
-✔ Which style guide do you want to follow? · google
-✔ What format do you want your config file to be in? · JavaScript
-Checking peerDependencies of eslint-config-google@latest
-✔ Would you like to install them now with npm? · Yes
+This template has got Next-Lint, Prettier, and Husky set up to consistently write and style your code.  
+This template is for a React-Next.js-Typescript, but you can modify it as you like.  
+I use Visual Studio code and installed the ESLint and Prettier extentions.  
+Your code will auto-format whenever you hit save and pre-commit hooks to check your code for style consistency using Husky.  
+It uses the Google's Typescript style guidelines.
 
-add settings lines to .eslintrc.js
-
-npm install --save-dev prettier  
-npm install --save-dev eslint-config-prettier
-
-add 'prettier' to 'extends' of .eslintrc.js
-
-install vscode extensions ES7 and Prettier
-in settings:
-
-- "editor.defaultFormatter": "esbenp.prettier-vscode",
-- "editor.formatOnPaste": true
-- "editor.formatOnSave": true,
-
-Errors in index.ts file after finishing with settings:
-
-- Missing JSDoc comment -> .eslint(require-jsdoc)
-- 'React' must be in scope when using JSX -> eslint(react/react-in-jsx-scope)
-  Fix: added
+Simply git clone and `npm install` at the root,  
+Install the ESLint and ES7 vscode extensions,  
+write some code,
 
 ```
-import React from "react";
-
-/**
- * Home Page of the Application
- * @return {JSX.Element}
- */
-export default function Home(): JSX.Element {
+git add .
+git commit -m <message>
 ```
 
-prettier --write .
-zsh: command not found: prettier
-Fix: npm install -g prettier
+The terminal will let you know if you need to fix anything in your code, otherwise it accepts the commit.
 
-To execute eslint and prettier everytime you save:
-add .vscode folder in root
-add settings.json file in .vscode
-In this file, you can add settings specific to a particular project.  
-At the end of settings.josn, we say that eslint format first and then prettier format.
-
-Install husky to set up a pre git commit hook that is going to do 4 things:
-
-- no prettier warnings in the code
-- no eslint warnings in the code
-- no errors compiling typesript
-- that we can run a valid build using Next build
-
-npx husky-init
-npm install
-
-In package.json, in scripts:
-"check-types": "tsc --pretty --noEmit", //check typescript with prettier  
-"check-format": "prettier --check .", //tells prettier to check all files, except the ones added to a .prettierignore file  
-"check-lint": "eslint . --ext ts ext tsx --ext js", //tells eslint to check all .ts, .tsx and .tsx files
-"format":.. //automatically rewrite all of our files with proper formatting
-"test-all":.. // runs some of the above commands in sequence
-
-Update: Next.JS 11 now includes built-in support for ESLint -> add "next-lint": "next lint" to package.json.
-then do `npm run next-lint` in your terminal. You can also add it to the check sequence in your .husky/pre-commit file.
-
-add pre-commit file in .husky file that will run all scripts before it is commited and log warnings and errors.
-
-Notes:
-
-- I commented the npm run build part of pre-commit, uncomment if you want to add that stage.
-- added:
-
-```
-/* eslint-disable react/prop-types */
-/* eslint-disable require-jsdoc */
-/* eslint-disable react/react-in-jsx-scope */
-```
-
-to \_app.js.
-
-- add lint-staged to check staged files
-- added .eslintignore and .prettierignore with a few extentions to ignore
-- see video: https://www.youtube.com/watch?v=sH93pQb9bWM
+This repo is slightly different from the one of the original author -> original video here: https://www.youtube.com/watch?v=sH93pQb9bWM
+See the notes.txt for more details of the set up.
