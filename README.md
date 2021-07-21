@@ -76,7 +76,7 @@ In package.json, in scripts:
 Update: Next.JS 11 now includes built-in support for ESLint -> add "next-lint": "next lint" to package.json.
 then do `npm run next-lint` in your terminal. You can also add it to the check sequence in your .husky/pre-commit file.
 
-add pre-commit file in .husky file that will run all scripts before it is commited and log warnings and errors
+add pre-commit file in .husky file that will run all scripts before it is commited and log warnings and errors.
 
 Note:
 
