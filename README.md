@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="250" src="https://github.com/stephanBV/husky-gitActions-lint-prettier-next/blob/main/thumbnail/husky-gitActions-lint-prettier-next.png"/>
+  <img height="300" src="https://github.com/stephanBV/template-ci-nextjs-typescript-autoLint-with-ESLint-Prettier/blob/main/thumbnail/husky-gitActions-lint-prettier-next.png"/>
 </p>
 
 This template does 4 things:
