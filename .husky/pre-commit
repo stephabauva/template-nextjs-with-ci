@@ -12,6 +12,7 @@ npm run check-format ||
 )
 
 # # Check ESLint Standards
+# -> add "check-lint": "eslint . --ext ts --ext tsx --ext js --ext jsx", to package.json if you want to use this instead of next-lint
 # npm run check-lint ||
 # (
 #         echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 

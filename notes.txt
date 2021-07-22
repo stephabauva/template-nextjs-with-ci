@@ -88,3 +88,10 @@ to \_app.js.
 - add lint-staged to check staged files
 - added .eslintignore and .prettierignore with a few extentions to ignore
 - see video: https://www.youtube.com/watch?v=sH93pQb9bWM
+
+Notes for github actions:
+An action is a reusable unit of code;  
+A matrix allows you to create multiple jobs by performing variable substitution in a single job definition.   
+For example, you can use a matrix to create jobs for more than one supported version of a programming language,   
+operating system, or tool.   
+--> you put your variables in "strategy", for e.g. os: [ubuntu-latest], and then get the variable by doing {{ matrix.os }}.
